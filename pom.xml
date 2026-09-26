@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>spbu_go_course</artifactId>
+    <artifactId>spbu_java_course</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
