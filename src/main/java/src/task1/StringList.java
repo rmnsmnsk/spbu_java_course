@@ -1,10 +1,27 @@
 package src.task1;
 
+import java.util.Iterator;
 import java.util.Objects;
 
-public class StringList {
+public class StringList implements Iterator {
     private int size;
     private Node head;
+
+    private Node position;
+
+    @Override
+    public boolean hasNext() {
+        return position != null;
+    }
+
+    @Override
+    public String next() {
+        String element = position.value;
+
+        position = position.next;
+
+        return element;
+    }
 
     private static class Node {
         private final String value;
@@ -69,4 +86,5 @@ public class StringList {
     public int size() {
         return size;
     }
+
 }

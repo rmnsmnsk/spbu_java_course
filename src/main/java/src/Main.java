@@ -1,17 +1,32 @@
 package src;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import src.task1.StringSet;
+
+import java.awt.*;
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        StringSet stringSet = new StringSet();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        stringSet.put("1");
+        stringSet.put("2");
+        System.out.println("size: " + stringSet.getSize());
+        stringSet.put("3");
+        stringSet.put("4");
+        stringSet.put("5");
+        stringSet.put("6");
+        stringSet.put("10");
+        System.out.println("size: " + stringSet.getSize());
+
+
+        System.out.println("7: " + stringSet.contains("7"));
+        System.out.println("1: " + stringSet.contains("1"));
+
+        System.out.println("remove 1: " + stringSet.remove("1"));
+        System.out.println("remove 7: " + stringSet.remove("7"));
+        System.out.println("1: " + stringSet.contains("1"));
+        System.out.println("size: " + stringSet.getSize());
+
     }
 }
