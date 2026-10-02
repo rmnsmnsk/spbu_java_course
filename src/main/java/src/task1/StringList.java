@@ -7,7 +7,7 @@ public class StringList implements Iterator {
     private int size;
     private Node head;
 
-    private Node position;
+    private Node position = null;
 
     @Override
     public boolean hasNext() {
@@ -40,6 +40,7 @@ public class StringList implements Iterator {
 
     public void addFirst(String value) {
         head = new Node(value, head);
+        position = head;
         size++;
     }
 

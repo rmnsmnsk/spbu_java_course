@@ -17,6 +17,7 @@ public class Main {
         stringSet.put("5");
         stringSet.put("6");
         stringSet.put("10");
+        stringSet.put("8");
         System.out.println("size: " + stringSet.getSize());
 
 
@@ -25,8 +26,13 @@ public class Main {
 
         System.out.println("remove 1: " + stringSet.remove("1"));
         System.out.println("remove 7: " + stringSet.remove("7"));
+        System.out.println("remove 1: " + stringSet.remove("1"));
         System.out.println("1: " + stringSet.contains("1"));
         System.out.println("size: " + stringSet.getSize());
 
+        System.out.println("clear");
+        stringSet.clear();
+        System.out.println("size: " + stringSet.getSize());
+        System.out.println("1: " + stringSet.contains("1"));
     }
 }
