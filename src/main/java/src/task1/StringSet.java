@@ -17,6 +17,7 @@ public class StringSet {
         for (int i = 0; i < capacity; i++) {
             array.add(new StringList());
         }
+        size = 0;
     }
 
     public void put(String element) {
@@ -61,8 +62,9 @@ public class StringSet {
     
     
     public void clear() {
-        array = new ArrayList<>(8);
-        size = 0;
+        capacity = 8;
+        array = new ArrayList<>(capacity);
+        init(array);
     }
     
     private int getIndex(String element) {
@@ -84,7 +86,10 @@ public class StringSet {
                 int newIndex = getIndex(value);
 
                 newArray.get(newIndex).addFirst(value);
+                size++;
             }
         }
+
+        array = newArray;
     }
 }
