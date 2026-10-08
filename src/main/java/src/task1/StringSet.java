@@ -6,7 +6,13 @@ public class StringSet {
     private int capacity = 8;
     private ArrayList<StringList> array = new ArrayList<>(capacity);
     private int size = 0;
+    private InitStringList init = StringList::new;
 
+
+    public StringSet(InitStringList init) {
+        this.init = init;
+        init(this.array);
+    }
 
     public StringSet() {
         init(this.array);
@@ -15,7 +21,7 @@ public class StringSet {
 
     private void init(ArrayList<StringList> array) {
         for (int i = 0; i < capacity; i++) {
-            array.add(new StringList());
+            array.add(init.initStringList());
         }
         size = 0;
     }
@@ -26,11 +32,11 @@ public class StringSet {
         }
 
         double load = ((double) size) / capacity;
-        
+
         if (load > 0.75) {
             resize();
         }
-        
+
         int index = getIndex(element);
 
         array.get(index).addFirst(element);
@@ -45,42 +51,40 @@ public class StringSet {
             size--;
             return true;
         }
-        
+
         return false;
     }
 
-    
+
     public boolean contains(String element) {
         int index = getIndex(element);
-        
+
         return array.get(index).contains(element);
     }
-    
+
     public int getSize() {
         return size;
     }
-    
-    
+
+
     public void clear() {
         capacity = 8;
         array = new ArrayList<>(capacity);
         init(array);
     }
-    
+
     private int getIndex(String element) {
         return Math.abs(element.hashCode()) % capacity;
     }
-    
-    
+
+
     private void resize() {
         System.out.println("resize");
         capacity *= 2;
         ArrayList<StringList> newArray = new ArrayList<StringList>(capacity);
         init(newArray);
 
-        for (int i = 0; i < array.size(); i++) {
-            StringList stringList = array.get(i);
-
+        for (StringList stringList : array) {
             while (stringList.hasNext()) {
                 String value = stringList.next();
                 int newIndex = getIndex(value);
