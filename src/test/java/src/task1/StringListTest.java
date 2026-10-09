@@ -1,14 +1,20 @@
 package src.task1;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.BeforeEach;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 class StringListTest {
 
+    private StringList list;
+
+    @BeforeEach
+    void setup(){
+        list = new StringList();
+    }
+
     @Test
     void addFirst_whenListIsEmpty_addsElement() {
-        var list = new StringList();
 
         list.addFirst("1");
 
@@ -18,7 +24,6 @@ class StringListTest {
 
     @Test
     void remove_whenListIsNotEmpty_removesElement() {
-        var list = new StringList();
         list.addFirst("1");
 
         boolean removed = list.remove("1");
@@ -30,7 +35,6 @@ class StringListTest {
 
     @Test
     void remove_whenElementDoesNotExist_doesNotChangeSize() {
-        var list = new StringList();
 
         boolean removed = list.remove("1");
 
@@ -40,7 +44,6 @@ class StringListTest {
 
     @Test
     void remove_whenListContainsSeveralElements_removesSpecifiedElement() {
-        var list = new StringList();
         list.addFirst("1");
         list.addFirst("2");
         list.addFirst("3");

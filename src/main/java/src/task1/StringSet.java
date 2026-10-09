@@ -1,21 +1,28 @@
 package src.task1;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
 
 public class StringSet {
+
     private int capacity = 8;
     private ArrayList<StringList> array = new ArrayList<>(capacity);
     private int size = 0;
 
+    private final Supplier<StringList> listFactory;
 
     public StringSet() {
-        init(this.array);
+        this(StringList::new);
     }
 
+    StringSet(Supplier<StringList> factory){
+        this.listFactory = factory;
+        init(array);
+    }
 
     private void init(ArrayList<StringList> array) {
         for (int i = 0; i < capacity; i++) {
-            array.add(new StringList());
+            array.add(listFactory.get());
         }
         size = 0;
     }
